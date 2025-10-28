@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="h-full bg-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 長文產生器</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+        "zustand": "https://aistudiocdn.com/zustand@^5.0.8",
+        "zustand/": "https://aistudiocdn.com/zustand@^5.0.8/",
+        "zustand/middleware": "https://aistudiocdn.com/zustand@^5.0.8/middleware"
+      }
+    }
+  </script>
+  <!-- Marked.js for Markdown rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <!-- Tailwind CSS CDN with Typography plugin -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <style>
+    /* Custom scrollbar styles */
+    .custom-scroll::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1; /* slate-300 */
+      border-radius: 10px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8; /* slate-400 */
+    }
+
+    /* Subtle grid background for body */
+    body {
+      background-color: #f1f5f9; /* slate-100 */
+      background-image: linear-gradient(#e2e8f0 1px, transparent 1px),
+                        linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="h-full">
+  <noscript>您需要啟用 JavaScript 才能運行此應用程式。</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

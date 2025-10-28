@@ -1,0 +1,5 @@
+{
+  "name": "AI 長文產生器",
+  "description": "An AI-powered application that guides users through a structured process of generating in-depth, long-form articles on complex topics using a simulated team of experts.",
+  "requestFramePermissions": []
+}
