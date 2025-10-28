@@ -1,12 +1,30 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import type { Character } from '../types';
 
-if (!process.env.API_KEY) {
-  throw new Error("API_KEY environment variable not set");
+// Define a new property on the window object for TypeScript
+declare global {
+    interface Window {
+        APP_CONFIG: {
+            API_KEY: string;
+        }
+    }
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Read API key from the window object injected by Vercel's build process
+const apiKey = window.APP_CONFIG?.API_KEY;
+
+if (!apiKey) {
+  // Display a user-friendly error message in the DOM if the key is missing
+  const rootElement = document.getElementById('root');
+  if (rootElement) {
+    rootElement.innerHTML = `<div style="padding: 2rem; text-align: center; font-family: sans-serif; color: #333;"><h1>設定錯誤 (Configuration Error)</h1><p>API 金鑰未設定。請確認 Vercel 專案的環境變數 (Environment Variables) 已正確配置。</p></div>`;
+  }
+  // Also throw an error to stop execution
+  throw new Error("API_KEY not found in window.APP_CONFIG. Please set the GEMINI_API_KEY environment variable in your Vercel project settings.");
+}
+
+const ai = new GoogleGenAI({ apiKey: apiKey });
+
 
 // Helper to extract citations from grounding metadata
 const extractCitations = (response: any) => {
